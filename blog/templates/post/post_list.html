@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+{% load bootstrap4 %}
+{% block title %}My Blog{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css/Home.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 5.14.0, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    
+    
+    
+
+    <section class="u-clearfix u-gradient u-section-1" id="sec-dba6">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h1 class="u-custom-font u-font-merriweather u-text u-text-default u-text-white u-text-1">Backend&nbsp;<br>development 
+        </h1>
+        <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="{% static 'images/Programmer-amico1.png' %}" alt="" data-image-width="2000" data-image-height="2000">
+        <h3 class="u-custom-font u-font-merriweather u-text u-text-grey-5 u-text-2">All what you have to know about django</h3>
+      </div>
+    </section>
+
+
+    
+
+      
+    
+      
+    <section class="u-align-center u-clearfix u-gradient u-section-2" id="carousel_3799">
+
+      <div class="u-clearfix u-sheet u-sheet-1">
+
+        <h1 class="u-custom-font u-font-georgia u-text u-text-default u-text-white u-text-1">Latest Posts</h1><!--blog--><!--blog_options_json--><!--{"type":"Recent","source":"","tags":"","count":""}--><!--/blog_options_json-->
+        <div class="u-blog u-expanded-width-sm u-expanded-width-xl u-layout-grid u-blog-1">
+          <div class="u-hidden-lg u-repeater u-repeater-1">
+            <!--blog_post-->
+            
+            {% for post in posts %}
+              {% for tag in post.tags.all %} 
+            
+              
+            <div class="u-blog-post u-container-style u-hidden-md u-repeater-item u-white u-repeater-item-1">
+              <div class="u-container-layout u-similar-container u-container-layout-1">
+                
+                <a class="u-post-header-link" href="{{ post.get_absolute_url }}"><!--blog_post_image-->
+                  <img alt="image" class="u-blog-control u-expanded-width u-image u-image-default u-image-1" src="{{post.image.url}}"><!--/blog_post_image-->
+                </a><!--blog_post_header-->
+          
+                  
+                <h4 class="u-blog-control u-text u-text-2">
+                  <a class="u-post-header-link" href="{{ post.get_absolute_url }}">{{post.title}}</a>
+                </h4><!--/blog_post_header--><!--blog_post_content-->
+                <div class="u-blog-control u-post-content u-text u-text-3 fr-view">{{ post.body|markdown|truncatewords_html:30 }}</div><!--/blog_post_content--><!--blog_post_readmore-->
+                <a href="{{ post.get_absolute_url }}" class="u-blog-control u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-base u-btn u-btn-rectangle u-button-style u-none u-btn-1"><!--blog_post_readmore_content--><!--options_json--><!--{"content":"","defaultValue":"Read More"}--><!--/options_json-->Read More<!--/blog_post_readmore_content--></a><!--/blog_post_readmore-->
+                <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
+                  {{ tag.name }}
+                 </a>
+              </div>
+            </div>
+              {% endfor %}
+            {% endfor %}
+            </div><!--/blog--><!--blog--><!--blog_options_json--><!--{"type":"Recent","source":"","tags":"","count":""}--><!--/blog_options_json-->
+        </div>
+      </div>
+    </section>
+        
+        
+        
+        
+        
+            
+            
+      
+  
+    
+    
+{% include "pagination.html" with page=posts %}
+  
+{% endblock content %}
+
+
+
+

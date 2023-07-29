@@ -1,0 +1,12 @@
+.pagination_wrap {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  
+
+  /* line 110, ../../Arafath/CL/December/235. Job board/HTML/scss/_candidates.scss */
+  .pagination_wrap ul li a:hover {
+    border-color: rgb(227, 115, 115);
+    color: #ee6d36;
+  }

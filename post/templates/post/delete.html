@@ -1,0 +1,12 @@
+<h1>Delete </h1>
+
+
+ <a href="{% url 'posts' %}">Posts</a>
+
+<br>
+
+<form method="post" >
+  {% csrf_token %}
+ 
+  <button   class="btn btn-outline-danger">Delete</button>
+</form>
